@@ -1,39 +1,38 @@
 # Chronicle::Zulip
+[![Gem Version](https://badge.fury.io/rb/chronicle-zulip.svg)](https://badge.fury.io/rb/chronicle-zulip)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/chronicle/zulip`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'chronicle-zulip'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install chronicle-zulip
+Extract your Zulip messages using the command line with this plugin for [chronicle-etl](https://github.com/chronicle-app/chronicle-etl).
 
 ## Usage
 
-TODO: Write usage instructions here
+```sh
+# Install chronicle-etl and this plugin
+$ gem install chronicle-etl
+$ chronicle-etl plugins:install zulip
+```
 
-## Development
+### Extracting zulip from IMAP
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+You can get a personal access token by going to Settings -> Account & Privacy and pressing the "Show/change your API key".
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```sh
+# Save username, access_token, and realm
+$ chronicle-etl secrets:set zulip username foo@gmail.com
+$ chronicle-etl secrets:set zulip access_token ACCESS_TOKEN
+$ chronicle-etl secrets:set zulip realm foo
 
-## Contributing
+# Then, retrieve your private messages
+$ chronicle-etl --extractor zulip:private-messages --loader json
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/chronicle-zulip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/chronicle-zulip/blob/main/CODE_OF_CONDUCT.md).
+## Available Connectors
+### Extractors
 
-## Code of Conduct
+#### `private-messages`
+Extractor for importing private messages from Zulip
 
-Everyone interacting in the Chronicle::Zulip project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/chronicle-zulip/blob/main/CODE_OF_CONDUCT.md).
+##### Settings
+
+- `username`: Your email address associated with Zulip account
+- `access_token`: Your personal access token
+- `realm`: ____.zulipchat.com
