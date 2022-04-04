@@ -20,7 +20,7 @@ $ chronicle-etl secrets:set zulip access_token ACCESS_TOKEN
 $ chronicle-etl secrets:set zulip realm foo
 
 # Then, retrieve your private messages
-$ chronicle-etl --extractor zulip:private-messages --loader json
+$ chronicle-etl --extractor zulip:private-message --loader json
 ```
 
 ## Available Connectors
