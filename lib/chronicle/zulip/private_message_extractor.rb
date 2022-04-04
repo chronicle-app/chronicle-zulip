@@ -18,7 +18,7 @@ module Chronicle
       end
 
       def extract
-        @proxy.all_private_messages do |message|
+        @proxy.all_private_messages(since: @config.since, limit: @config.limit) do |message|
           yield Chronicle::ETL::Extraction.new(data: message)
         end
       end
