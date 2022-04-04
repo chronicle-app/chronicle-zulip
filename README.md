@@ -11,8 +11,6 @@ $ gem install chronicle-etl
 $ chronicle-etl plugins:install zulip
 ```
 
-### Extracting zulip from IMAP
-
 You can get a personal access token by going to Settings -> Account & Privacy and pressing the "Show/change your API key".
 
 ```sh
@@ -28,11 +26,18 @@ $ chronicle-etl --extractor zulip:private-messages --loader json
 ## Available Connectors
 ### Extractors
 
-#### `private-messages`
+#### `private-message`
+
 Extractor for importing private messages from Zulip
 
 ##### Settings
 
-- `username`: Your email address associated with Zulip account
+- `username`: The email address associated with your Zulip account
 - `access_token`: Your personal access token
 - `realm`: ____.zulipchat.com
+
+### Transformers
+
+#### `message`
+
+Transform a Zulip message into Chronicle Schema

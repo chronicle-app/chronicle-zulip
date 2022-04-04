@@ -9,7 +9,7 @@ module Chronicle
         @realm = realm
       end
 
-      def all_dms(anchor: 'oldest')
+      def all_private_messages(anchor: 'oldest')
         narrow = '[{"negated":false,"operator":"is","operand":"private"}]'
         has_more = true
 
