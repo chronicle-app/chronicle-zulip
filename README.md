@@ -26,7 +26,7 @@ $ chronicle-etl --extractor zulip:private-message --loader json
 ## Available Connectors
 ### Extractors
 
-#### `private-message`
+#### `private-messages`
 
 Extractor for importing private messages from Zulip
 

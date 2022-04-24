@@ -6,7 +6,7 @@ module Chronicle
       register_connector do |r|
         r.provider = 'zulip'
         r.description = 'zulip direct messages'
-        r.identifier = 'private-message'
+        r.identifier = 'private-messages'
       end
 
       setting :access_token, required: true
